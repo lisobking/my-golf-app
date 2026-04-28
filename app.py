@@ -8,169 +8,166 @@ import os
 # 1. 페이지 설정
 st.set_page_config(page_title="골프 가성비 비서", page_icon="⛳️", layout="centered")
 
-# [강력한 UI 커스텀 CSS] - 이 부분이 앱의 생명입니다.
+# [초강력 커스텀 CSS] - 이 코드가 효섭님의 앱을 '상용화' 수준으로 만듭니다.
 st.markdown("""
     <style>
-    /* 기본 배경 및 폰트 */
     @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700;900&display=swap');
     
+    /* 전체 배경: 끊김 없는 부드러운 톤 */
     .stApp {
-        background: linear-gradient(180deg, #FAE100 0%, #F2F2F2 30%, #F2F2F2 100%);
-    }
-    
-    html, body, [class*="css"]  {
+        background: #F8F9FA;
         font-family: 'Noto Sans KR', sans-serif;
     }
-
-    /* 헤더 및 툴바 제거 */
+    
+    /* 헤더 및 툴바 완전 제거 */
     header {visibility: hidden;}
     [data-testid="stHeader"] {background: rgba(0,0,0,0);}
-    .main .block-container { padding-top: 2rem !important; }
+    .main .block-container { padding-top: 1rem !important; max-width: 500px !important; }
 
-    /* 캐릭터 섹션 디자인 */
-    .char-box {
+    /* 상단 캐릭터 & 타이틀 섹션 (가장 중요) */
+    .brand-section {
         display: flex;
         flex-direction: column;
         align-items: center;
-        justify-content: center;
-        margin-top: 10px;
+        padding: 40px 0 20px 0;
+        background: linear-gradient(180deg, #FAE100 0%, #FAE100 70%, #F8F9FA 100%);
+        margin: -100px -100px 30px -100px;
+        border-radius: 0 0 50px 50px;
+        box-shadow: 0 10px 30px rgba(250, 225, 0, 0.3);
     }
     
-    /* 캐릭터를 감싸는 둥근 원형 배경 (흰 배경 해결책) */
-    .char-img-wrapper {
-        background-color: white;
-        border-radius: 50%;
-        padding: 10px;
-        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-        border: 4px solid #FAE100;
-        margin-bottom: -40px;
-        z-index: 99;
+    .char-profile {
+        width: 120px;
+        height: 120px;
+        background: white;
+        border-radius: 40px; /* 캐릭터 하얀 박스를 아예 디자인으로 승화 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        border: 5px solid white;
+        margin-bottom: 15px;
+        overflow: hidden;
     }
 
-    /* 카카오톡 스타일 말풍선 */
-    .bubble {
-        background-color: white;
-        padding: 25px 20px 15px 20px;
-        border-radius: 25px;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        text-align: center;
-        width: 90%;
-        margin-top: 20px;
+    .main-title {
+        color: #1E1E1E;
+        font-size: 1.8rem;
+        font-weight: 900;
+        margin-top: 10px;
     }
-    .bubble b { color: #1E1E1E; font-size: 1.2rem; font-weight: 900; }
 
-    /* 입력 박스 카드 디자인 */
+    /* 입력 박스 그룹화 (앱 스타일) */
     div[data-testid="stForm"] {
         background-color: white !important;
-        border-radius: 25px !important;
+        border-radius: 30px !important;
         border: none !important;
-        padding: 25px !important;
-        box-shadow: 0 10px 25px rgba(0,0,0,0.05) !important;
-        margin-top: 20px;
+        padding: 30px !important;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.05) !important;
     }
 
-    /* 위젯 글씨 크기 조정 */
-    label p { font-weight: 700 !important; color: #555 !important; }
-
-    /* 전용 검색 버튼 */
+    /* 검색 버튼: 상용 앱의 터치감 */
     .stButton>button {
         width: 100%;
-        border-radius: 18px !important;
+        border-radius: 20px !important;
         height: 4.5rem !important;
-        background-color: #1E1E1E !important;
+        background: #1E1E1E !important;
         color: #FAE100 !important;
         font-size: 1.4rem !important;
         font-weight: 900 !important;
         border: none !important;
-        transition: transform 0.2s ease;
-        margin-top: 15px;
+        margin-top: 10px;
+        transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
-    .stButton>button:active { transform: scale(0.98); }
+    .stButton>button:active { transform: scale(0.95); opacity: 0.9; }
 
-    /* 결과 리스트 카드 스타일 */
-    .result-card {
+    /* 결과 카드 디자인 (Premium) */
+    .golf-result-card {
         background: white;
-        border-radius: 20px;
-        padding: 20px;
-        margin-bottom: 15px;
-        border: 1px solid #eee;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+        border-radius: 25px;
+        padding: 25px;
+        margin-bottom: 20px;
+        border: 1px solid #F1F3F5;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.02);
     }
-    .res-name { font-size: 1.3rem; font-weight: 900; color: #1E1E1E; margin-bottom: 5px; }
-    .res-price { font-size: 1.2rem; font-weight: 700; color: #FF4D5A; }
-    .res-tag { display: inline-block; background: #F2F2F2; padding: 4px 10px; border-radius: 8px; font-size: 0.8rem; color: #777; margin-top: 8px; }
-    
-    /* 예약 버튼(Link) 커스텀 */
+    .golf-name { font-size: 1.4rem; font-weight: 900; color: #1E1E1E; }
+    .golf-price { font-size: 1.2rem; font-weight: 700; color: #FF4D5A; margin: 10px 0; }
+    .golf-meta { color: #868E96; font-size: 0.9rem; }
+
+    /* 예약 버튼(Link) 하이엔드 커스텀 */
     .stLinkButton>a {
-        background-color: #FAE100 !important;
+        background-color: #F8F9FA !important;
         color: #1E1E1E !important;
-        border-radius: 12px !important;
+        border: 1.5px solid #E9ECEF !important;
+        border-radius: 15px !important;
         font-weight: 700 !important;
-        border: none !important;
+        padding: 12px !important;
         width: 100% !important;
+        display: block;
         text-align: center;
+        text-decoration: none;
     }
     </style>
     """, unsafe_allow_html=True)
 
-# 2. 메인 배너 섹션 (캐릭터 일체화)
-st.markdown("<div class='char-box'>", unsafe_allow_html=True)
-if os.path.exists('character.png'):
-    st.markdown("<div class='char-img-wrapper'>", unsafe_allow_html=True)
-    st.image('character.png', width=120)
-    st.markdown("</div>", unsafe_allow_html=True)
+# 2. 상단 브랜드 섹션 (이미지 하얀 배경 문제를 디자인으로 해결)
 st.markdown("""
-    <div class='bubble'>
-        <b>효섭님, 최저가 티타임입니다!</b><br>
-        <span style='color:#777; font-size:0.9rem;'>오늘도 즐거운 라운드 되세요 ⛳️</span>
+    <div class='brand-section'>
+        <div class='char-profile'>
+            <img src='https://i.imgur.com/your_uploaded_image_id.png' width='100'> 
+        </div>
+        <div class='main-title'>골프 가성비 비서</div>
+        <div style='color: #444; font-size: 0.9rem;'>효섭님을 위한 야간 최저가 서칭</div>
     </div>
 """, unsafe_allow_html=True)
-st.markdown("</div>", unsafe_allow_html=True)
 
-# 3. 검색 조건 설정 (앱 설정창 스타일)
+# ※ 로컬에서는 st.image('character.png')를 쓰고 싶다면 위 HTML 대신 
+# 아래 주석 처리된 코드를 brand-section 안에 적절히 배치해야 합니다.
+# st.image('character.png', width=120)
+
+# 3. 입력 폼 (모바일 설정창 스타일)
 with st.form("search_form"):
     area_map = {"서울/경기": "1", "강원": "2", "충청": "3", "전라": "4", "경상": "5", "제주": "6"}
     
-    selected_areas = st.multiselect("📍 검색 지역", options=list(area_map.keys()), default=["서울/경기"])
-    selected_date = st.date_input("📅 라운드 날짜", value=datetime.now())
+    st.markdown("<p style='font-weight:700; color:#495057; margin-bottom: -15px;'>어디로 가실까요?</p>", unsafe_allow_html=True)
+    selected_areas = st.multiselect("", options=list(area_map.keys()), default=["서울/경기"])
+    
+    st.markdown("<p style='font-weight:700; color:#495057; margin-bottom: -15px; margin-top: 10px;'>언제 가실까요?</p>", unsafe_allow_html=True)
+    selected_date = st.date_input("", value=datetime.now())
     
     date_str = selected_date.strftime("%Y-%m-%d")
-    submitted = st.form_submit_button("🚀 최저가 검색 시작")
+    submitted = st.form_submit_button("최저가 검색 시작")
 
-# 4. 결과 출력
+# 4. 결과 출력 섹션
 if submitted:
     if not selected_areas:
-        st.error("지역을 하나 이상 골라주세요!")
+        st.error("지역을 선택해주세요.")
     else:
         codes = [area_map[name] for name in selected_areas]
         area_codes_str = ",".join(codes)
         
-        with st.spinner("⛳️ AI 비서가 데이터를 분석 중입니다..."):
+        with st.spinner("⛳️ AI 비서가 최적의 조건을 분석 중..."):
             try:
-                # scraper.py의 함수 호출
                 df = asyncio.run(fetch_kakao_golf_data(date=date_str, area_codes=area_codes_str))
-                
                 if not df.empty:
                     df_sorted = df.sort_values(by='그린피')
-                    st.markdown(f"### 🏆 검색 결과 {len(df_sorted)}건")
+                    st.markdown(f"### 🏆 추천 티타임 {len(df_sorted)}건")
                     
                     for _, row in df_sorted.iterrows():
-                        # 리스트 카드 형태
                         st.markdown(f"""
-                            <div class='result-card'>
-                                <div class='res-name'>{row['골프장']}</div>
-                                <div class='res-price'>{row['그린피']:,}원 <span style='font-size:0.8rem; color:#999;'>부터</span></div>
-                                <div class='res-tag'>⏰ 잔여팀: {row['잔여팀']}</div>
+                            <div class='golf-result-card'>
+                                <div class='golf-name'>{row['골프장']}</div>
+                                <div class='golf-price'>{row['그린피']:,}원 <span style='font-size:0.8rem; color:#adb5bd;'>부터</span></div>
+                                <div class='golf-meta'>⏰ {row['잔여팀']}</div>
                             </div>
                         """, unsafe_allow_html=True)
                         
-                        st.link_button(f"👉 {row['골프장']} 바로 예약하기", 
+                        st.link_button("상세 정보 및 예약", 
                                       f"https://www.kakao.golf/tee-time?date={date_str.replace('-','')}&area={area_codes_str}")
-                    
                     st.balloons()
                 else:
-                    st.warning("예약 가능한 티타임이 없네요. 날짜를 조정해 보세요!")
-            except Exception:
-                st.error("서버 접속이 원활하지 않습니다.")
+                    st.info("예약 가능한 티타임이 없어요. 😂")
+            except:
+                st.error("서버 연결 실패")
 
-st.markdown("<br><p style='text-align: center; color: #bdc3c7; font-size: 0.8rem;'>© 2026 효섭's AI Golf Assistant</p>", unsafe_allow_html=True)
+st.markdown("<br><p style='text-align: center; color: #DEE2E6; font-size: 0.8rem;'>© 2026 효섭's AI Golf Assistant</p>", unsafe_allow_html=True)
