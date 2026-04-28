@@ -11,12 +11,12 @@ try:
 except ImportError:
     SCRAPER_AVAILABLE = False
     async def fetch_kakao_golf_data(date: str, area_codes: str):
-        """스크레이퍼 미설치 시 더미 데이터 반환"""
+        """스크레이퍼 미설치 시 더미 데이터 반환 (골프장 ID 포함)"""
         await asyncio.sleep(1)
         return pd.DataFrame([
-            {"골프장": "레이크사이드 CC", "그린피": 89000, "잔여팀": "3팀 남음", "url_key": "lakeside"},
-            {"골프장": "블루원 용인 CC", "그린피": 72000, "잔여팀": "5팀 남음", "url_key": "blueone"},
-            {"골프장": "남서울 골프클럽", "그린피": 95000, "잔여팀": "1팀 남음", "url_key": "namseoul"},
+            {"골프장": "코리아 CC",      "그린피": 72000, "잔여팀": "2팀 남음", "golf_id": 430},
+            {"골프장": "레이크사이드 CC", "그린피": 89000, "잔여팀": "3팀 남음", "golf_id": 215},
+            {"골프장": "남서울 골프클럽", "그린피": 95000, "잔여팀": "1팀 남음", "golf_id": 178},
         ])
 
 # ─────────────────────────────────────────────────────────────────────────────
@@ -445,13 +445,23 @@ if submitted:
                 </div>
                 """, unsafe_allow_html=True)
 
-                url_key  = row.get("url_key", "")
-                book_url = (
-                    f"https://www.kakao.golf/tee-time"
-                    f"?date={date_str.replace('-','')}&area={area_codes}"
-                    + (f"&cc={url_key}" if url_key else "")
-                )
-                st.link_button(f"카카오골프에서 예약하기 →", book_url)
+                # ── 카카오골프 URL 패턴:
+                # https://www.kakao.golf/golf/{golf_id}?date=YYYYMMDD&area={area}&reservable=true&timeZone=8
+                golf_id       = row.get("golf_id", "")
+                date_compact  = selected_date.strftime("%Y%m%d")
+                if golf_id:
+                    book_url = (
+                        f"https://www.kakao.golf/golf/{golf_id}"
+                        f"?date={date_compact}&area={area_codes}"
+                        f"&reservable=true&timeZone=8"
+                    )
+                else:
+                    # golf_id 없을 때 목록 페이지로 fallback
+                    book_url = (
+                        f"https://www.kakao.golf/golf"
+                        f"?date={date_compact}&area={area_codes}&reservable=true"
+                    )
+                st.link_button(f"⛳ {name} 카카오골프 예약하기 →", book_url)
 
             st.balloons()
 
