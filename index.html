@@ -2,92 +2,541 @@
 <html lang="ko">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <title>리베라 CC 라운딩 초대장</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;700&family=Playfair+Display:wght@700&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; padding: 20px 0; background-color: #f4f7f6; display: grid; gap: 30px; place-items: center; }
-        .slide-container { width: 1280px; height: 720px; background-color: #ffffff; border-radius: 15px; box-shadow: 0 15px 35px rgba(0,0,0,0.12); overflow: hidden; position: relative; font-family: 'Noto Sans KR', sans-serif; display: flex; flex-direction: column; padding: 60px 80px; margin-bottom: 20px; }
-        .slide-container::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(27, 77, 62, 0.03) 0%, rgba(255,255,255,1) 100%); z-index: 0; }
-        .slide-container > * { position: relative; z-index: 1; }
-        h1 { font-family: 'Playfair Display', serif; font-size: 85px; color: #1b4d3e; margin: 0; letter-spacing: -2px; }
-        .slide-title { font-size: 45px; color: #1b4d3e; font-weight: 700; margin-bottom: 40px; border-left: 10px solid #ffa500; padding-left: 25px; line-height: 1; width: 100%; }
-        p, li { font-size: 22px; color: #44544d; line-height: 1.6; }
-        .subtitle { font-size: 28px; color: #667c74; margin-top: 20px; font-weight: 300; }
-        .content-area { flex-grow: 1; display: flex; align-items: center; justify-content: center; width: 100%; }
-        .two-column { display: grid; grid-template-columns: 1fr 1fr; gap: 50px; width: 100%; align-items: center; }
-        .map-btn { display: inline-flex; align-items: center; gap: 12px; background-color: #1b4d3e; color: #fff; padding: 15px 30px; border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 18px; margin-top: 25px; }
-        .map-btn.kakao { background-color: #fae100; color: #3c1e1e; }
-        .image-wrapper { border-radius: 20px; overflow: hidden; box-shadow: 0 12px 25px rgba(0,0,0,0.1); width: 100%; height: 100%; }
-        .image-wrapper img { width: 100%; height: 100%; object-fit: cover; }
-        .timeline-box { display: flex; justify-content: space-between; position: relative; width: 100%; padding: 40px 0; }
-        .timeline-line { position: absolute; top: 120px; left: 5%; width: 90%; height: 2px; background: #dce3e1; z-index: 0; }
-        .timeline-item { width: 22%; text-align: center; position: relative; }
-        .timeline-node { width: 24px; height: 24px; background: #1b4d3e; border: 5px solid #fff; border-radius: 50%; margin: 35px auto; position: relative; z-index: 1; }
-        .timeline-item h3 { font-size: 32px; color: #1b4d3e; margin: 0; font-weight: 700; }
-        .menu-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; width: 100%; }
-        .menu-card { text-align: center; background: #fff; border-radius: 20px; padding-bottom: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
-        .menu-card .img-box { height: 250px; margin-bottom: 20px; }
-        .menu-card h4 { font-size: 24px; margin: 10px 0; color: #1b4d3e; }
-        .menu-card .price { font-size: 22px; color: #ffa500; font-weight: 700; }
-        .character-box { display: flex; align-items: center; gap: 40px; background: #fffdf5; padding: 40px; border-radius: 30px; border: 2px solid #fff2cc; }
-        .speech-bubble { font-family: 'Nanum Pen Script', cursive; font-size: 48px; color: #3c1e1e; line-height: 1.2; flex: 1; }
-        .char-img { width: 350px; height: 350px; border-radius: 50%; overflow: hidden; border: 8px solid #fff; background: #fff; }
+        :root {
+            --green-deep: #1a3d2f;
+            --green-mid: #2d6a4f;
+            --green-light: #52b788;
+            --gold: #c9993a;
+            --gold-light: #f0c040;
+            --cream: #faf8f3;
+            --text: #2c3e35;
+            --text-muted: #667c74;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background: #0f1f17;
+            font-family: 'Noto Sans KR', sans-serif;
+            color: var(--text);
+            min-height: 100vh;
+        }
+
+        /* ─── HERO ─────────────────────────────── */
+        .hero {
+            position: relative;
+            min-height: 100svh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute; inset: 0;
+            background: url('https://images.unsplash.com/photo-1587174486073-ae5e5cff47bc?auto=format&fit=crop&q=80&w=800') center/cover no-repeat;
+        }
+
+        .hero-bg::after {
+            content: '';
+            position: absolute; inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,30,20,0.1) 0%,
+                rgba(10,30,20,0.3) 40%,
+                rgba(10,30,20,0.85) 75%,
+                rgba(10,30,20,1) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            padding: 0 28px 56px;
+            animation: fadeUp 1s ease both;
+        }
+
+        .hero-label {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            color: var(--gold-light);
+            background: rgba(201,153,58,0.15);
+            border: 1px solid rgba(201,153,58,0.4);
+            padding: 6px 14px;
+            border-radius: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(34px, 9vw, 52px);
+            font-weight: 900;
+            color: #fff;
+            line-height: 1.15;
+            letter-spacing: -1px;
+            margin-bottom: 16px;
+        }
+
+        .hero-date {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            font-style: italic;
+            color: rgba(255,255,255,0.75);
+            letter-spacing: 1px;
+            margin-bottom: 32px;
+        }
+
+        .hero-scroll {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(255,255,255,0.5);
+            font-size: 12px;
+            letter-spacing: 3px;
+        }
+
+        .hero-scroll::before {
+            content: '';
+            display: block;
+            width: 32px;
+            height: 1px;
+            background: rgba(255,255,255,0.4);
+        }
+
+        /* ─── SECTION BASE ──────────────────────── */
+        .section {
+            background: var(--cream);
+            padding: 52px 24px 56px;
+            position: relative;
+        }
+
+        .section + .section {
+            border-top: 1px solid rgba(0,0,0,0.07);
+        }
+
+        .section-eyebrow {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .section-title {
+            font-family: 'Noto Serif KR', serif;
+            font-size: clamp(24px, 6.5vw, 32px);
+            font-weight: 700;
+            color: var(--green-deep);
+            line-height: 1.3;
+            margin-bottom: 36px;
+        }
+
+        /* ─── TIMELINE ──────────────────────────── */
+        .timeline {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            position: relative;
+            padding-left: 28px;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 6px;
+            top: 8px;
+            bottom: 8px;
+            width: 1px;
+            background: linear-gradient(to bottom, var(--green-light), rgba(82,183,136,0.1));
+        }
+
+        .tl-item {
+            display: flex;
+            gap: 20px;
+            padding-bottom: 36px;
+            position: relative;
+            animation: fadeUp 0.6s ease both;
+        }
+
+        .tl-item:last-child { padding-bottom: 0; }
+
+        .tl-dot {
+            position: absolute;
+            left: -28px;
+            top: 4px;
+            width: 13px;
+            height: 13px;
+            border-radius: 50%;
+            background: var(--green-mid);
+            border: 3px solid var(--cream);
+            box-shadow: 0 0 0 1px var(--green-mid);
+            flex-shrink: 0;
+        }
+
+        .tl-time {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 30px;
+            font-weight: 600;
+            color: var(--green-mid);
+            line-height: 1;
+            min-width: 72px;
+        }
+
+        .tl-label {
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--green-deep);
+            margin-bottom: 3px;
+        }
+
+        .tl-sub {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        /* ─── RESTAURANT ────────────────────────── */
+        .restaurant-img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 16px;
+            margin-bottom: 28px;
+            display: block;
+        }
+
+        .info-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .info-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: rgba(45,106,79,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 15px;
+        }
+
+        .info-text {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            padding-top: 6px;
+        }
+
+        .info-text strong {
+            color: var(--green-deep);
+        }
+
+        .map-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            background: #fae100;
+            color: #3c1e1e;
+            padding: 16px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            margin-top: 24px;
+            box-shadow: 0 4px 16px rgba(250,225,0,0.35);
+            transition: transform 0.15s ease, box-shadow 0.15s ease;
+        }
+
+        .map-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 8px rgba(250,225,0,0.2);
+        }
+
+        /* ─── MENU ──────────────────────────────── */
+        .menu-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .menu-card {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            background: #fff;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
+        }
+
+        .menu-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            flex-shrink: 0;
+        }
+
+        .menu-info {
+            flex: 1;
+            padding: 4px 0;
+        }
+
+        .menu-name {
+            font-weight: 700;
+            font-size: 17px;
+            color: var(--green-deep);
+            margin-bottom: 4px;
+        }
+
+        .menu-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .menu-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        /* ─── MASCOT ────────────────────────────── */
+        .mascot-section {
+            background: linear-gradient(135deg, #1a3d2f 0%, #0f2419 100%);
+            padding: 52px 24px 64px;
+        }
+
+        .mascot-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 28px;
+            padding: 36px 28px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 28px;
+            text-align: center;
+        }
+
+        .mascot-img {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            object-fit: contain;
+            background: #fff;
+            border: 5px solid rgba(255,255,255,0.2);
+            box-shadow: 0 0 0 2px rgba(201,153,58,0.5);
+        }
+
+        .speech {
+            font-family: 'Nanum Pen Script', cursive;
+            font-size: 32px;
+            color: #fff;
+            line-height: 1.5;
+        }
+
+        .speech strong {
+            color: var(--gold-light);
+        }
+
+        /* ─── FOOTER ────────────────────────────── */
+        .footer {
+            background: #0a1710;
+            padding: 36px 24px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: rgba(255,255,255,0.4);
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+        }
+
+        .footer-sub {
+            font-size: 12px;
+            color: rgba(255,255,255,0.25);
+            letter-spacing: 2px;
+        }
+
+        /* ─── ANIMATIONS ────────────────────────── */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(20px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+
+        .section {
+            animation: fadeUp 0.7s ease both;
+        }
+
+        /* ─── DIVIDER ───────────────────────────── */
+        .divider {
+            width: 40px;
+            height: 2px;
+            background: linear-gradient(to right, var(--gold), transparent);
+            margin-bottom: 32px;
+        }
+
+        /* ─── HIGHLIGHT BOX ─────────────────────── */
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(45,106,79,0.08), rgba(82,183,136,0.05));
+            border-left: 3px solid var(--green-light);
+            border-radius: 0 12px 12px 0;
+            padding: 16px 20px;
+            margin-bottom: 28px;
+        }
+
+        .highlight-box p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.7;
+        }
+
+        .highlight-box strong {
+            color: var(--green-deep);
+        }
     </style>
 </head>
 <body>
-    <div class="slide-container" style="background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1587174486073-ae5e5cff47bc?auto=format&fit=crop&q=80&w=1280'); background-size: cover; text-align: center; justify-content: center;">
-        <p style="color: #ffa500; font-weight: 700; font-size: 24px; letter-spacing: 8px; margin-bottom: 20px;">GOLF INVITATION</p>
-        <h1 style="color: #fff; font-size: 90px;">리베라 CC 라운딩 안내</h1>
-        <p class="subtitle" style="color: #eee; font-size: 32px;">2026. 05. 02 (토) | 11:22 AM TEE-OFF</p>
-    </div>
-    <div class="slide-container">
-        <h2 class="slide-title">당일 타임라인 (방이동 출발)</h2>
-        <div class="content-area">
-            <div class="timeline-box">
-                <div class="timeline-line"></div>
-                <div class="timeline-item"><h3>08:30</h3><div class="timeline-node"></div><p>방이동 출발</p></div>
-                <div class="timeline-item"><h3>09:40</h3><div class="timeline-node"></div><p>금성식당 식사</p></div>
-                <div class="timeline-item"><h3>10:40</h3><div class="timeline-node"></div><p>리베라 CC 도착</p></div>
-                <div class="timeline-item"><h3>11:22</h3><div class="timeline-node"></div><p>라운딩 시작</p></div>
-            </div>
+
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-content">
+            <div class="hero-label">Golf Invitation</div>
+            <h1 class="hero-title">리베라 CC<br>라운딩 안내</h1>
+            <p class="hero-date">2026. 05. 02 (토) &nbsp;·&nbsp; 11:22 AM Tee-Off</p>
+            <p class="hero-scroll">SCROLL</p>
         </div>
-    </div>
-    <div class="slide-container">
-        <h2 class="slide-title">식전 모임 : 금성식당</h2>
-        <div class="content-area">
-            <div class="two-column">
-                <div class="image-wrapper"><img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&q=80&w=600"></div>
-                <div>
-                    <h3>"재래식 손두부와 청국장"</h3>
-                    <p>라운딩 전 속이 가장 편안한 메뉴입니다.</p>
-                    <p style="margin-top: 30px; font-weight: 700; color: #1b4d3e;">📍 경기 용인시 처인구 양지면 남평로 16</p>
-                    <a href="https://map.kakao.com/link/search/용인%20금성식당" class="map-btn kakao" target="_blank">카카오맵 바로가기</a>
+    </section>
+
+    <section class="section">
+        <p class="section-eyebrow">Schedule</p>
+        <h2 class="section-title">당일 타임라인</h2>
+        <div class="divider"></div>
+        <div class="timeline">
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-time">08:30</div>
+                <div class="tl-body">
+                    <p class="tl-label">방이동 출발</p>
+                    <p class="tl-sub">집결 후 카풀 이동</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-time">09:40</div>
+                <div class="tl-body">
+                    <p class="tl-label">금성식당 식사</p>
+                    <p class="tl-sub">경기 용인시 양지면</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot"></div>
+                <div class="tl-time">10:40</div>
+                <div class="tl-body">
+                    <p class="tl-label">리베라 CC 도착</p>
+                    <p class="tl-sub">라커룸 이용 및 워밍업</p>
+                </div>
+            </div>
+            <div class="tl-item">
+                <div class="tl-dot" style="background: var(--gold); box-shadow: 0 0 0 1px var(--gold);"></div>
+                <div class="tl-time" style="color: var(--gold);">11:22</div>
+                <div class="tl-body">
+                    <p class="tl-label">⛳ 라운딩 시작</p>
+                    <p class="tl-sub">굿샷! 즐거운 라운드 되세요</p>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="slide-container">
-        <h2 class="slide-title">금성식당 주요 메뉴</h2>
-        <div class="content-area">
-            <div class="menu-grid">
-                <div class="menu-card"><div class="img-box"><img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=400"></div><h4>청국장 찌개</h4><p class="price">12,000원</p></div>
-                <div class="menu-card"><div class="img-box"><img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&q=80&w=400"></div><h4>재래식 손두부</h4><p class="price">7,000원</p></div>
-                <div class="menu-card"><div class="img-box"><img src="https://images.unsplash.com/photo-1563379091339-03b21bc4a4f8?auto=format&fit=crop&q=80&w=400"></div><h4>황태구이</h4><p class="price">15,000원</p></div>
+    </section>
+
+    <section class="section">
+        <p class="section-eyebrow">Pre-Round Dining</p>
+        <h2 class="section-title">식전 모임<br>금성식당</h2>
+        <div class="divider"></div>
+        <img class="restaurant-img" src="http://googleusercontent.com/image_collection/image_retrieval/1169305086055106579" alt="금성식당 전경">
+
+        <div class="highlight-box">
+            <p><strong>"재래식 손두부와 청국장"</strong><br>라운딩 전 속이 가장 편안한 메뉴입니다.</p>
+        </div>
+
+        <div class="info-row">
+            <div class="info-icon">📍</div>
+            <p class="info-text">경기 용인시 처인구 양지면<br>남평로 16</p>
+        </div>
+        <div class="info-row">
+            <div class="info-icon">🕘</div>
+            <p class="info-text"><strong>도착 시간</strong> 09:40 AM</p>
+        </div>
+
+        <a href="https://map.kakao.com/link/search/용인%20금성식당" class="map-btn" target="_blank">
+            <span style="font-size: 20px;">🗺️</span>
+            카카오맵 바로가기
+        </a>
+    </section>
+
+    <section class="section">
+        <p class="section-eyebrow">Menu</p>
+        <h2 class="section-title">금성식당 주요 메뉴</h2>
+        <div class="divider"></div>
+        <div class="menu-list">
+            <div class="menu-card">
+                <img class="menu-img" src="http://googleusercontent.com/image_collection/image_retrieval/13812841641029193796" alt="청국장 찌개">
+                <div class="menu-info">
+                    <p class="menu-name">청국장 찌개</p>
+                    <p class="menu-desc">구수하고 든든한 전통 한식</p>
+                    <p class="menu-price">12,000원</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img class="menu-img" src="http://googleusercontent.com/image_collection/image_retrieval/1169305086055106579" alt="재래식 손두부">
+                <div class="menu-info">
+                    <p class="menu-name">재래식 손두부</p>
+                    <p class="menu-desc">속이 편안한 담백한 두부</p>
+                    <p class="menu-price">7,000원</p>
+                </div>
+            </div>
+            <div class="menu-card">
+                <img class="menu-img" src="http://googleusercontent.com/image_collection/image_retrieval/2070445693038622114" alt="황태구이">
+                <div class="menu-info">
+                    <p class="menu-name">황태구이</p>
+                    <p class="menu-desc">바삭하고 고소한 황태 요리</p>
+                    <p class="menu-price">15,000원</p>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="slide-container">
-        <div class="character-box">
-            <div class="char-img"><img src="https://t1.daumcdn.net/friends/prod/category/ryan_round.png" style="width:100%; height:100%; object-fit:contain;"></div>
-            <div class="speech-bubble">
+    </section>
+
+    <section class="mascot-section">
+        <div class="mascot-card">
+            <img class="mascot-img" src="https://t1.daumcdn.net/friends/prod/category/ryan_round.png" alt="라이언 캐릭터">
+            <div class="speech">
                 "5월 2일 필드에서 뵙겠습니다!<br>오늘 모두 <strong>굿샷</strong> 하세요! ⛳️"
             </div>
         </div>
-    </div>
+    </section>
+
+    <footer class="footer">
+        <p class="footer-logo">RIVERA C.C.</p>
+        <p class="footer-sub">2026 · 05 · 02 &nbsp;|&nbsp; 11:22 AM TEE-OFF</p>
+    </footer>
+
 </body>
 </html>
