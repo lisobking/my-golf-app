@@ -36,7 +36,7 @@
             min-height: 100svh;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
+            justify-content: center; /* 상단 공백을 줄이기 위해 중앙 정렬로 변경 */
             overflow: hidden;
         }
 
@@ -50,8 +50,8 @@
             position: absolute; inset: 0;
             background: linear-gradient(
                 to bottom,
-                rgba(10,30,20,0.1) 0%,
-                rgba(10,30,20,0.3) 40%,
+                rgba(10,30,20,0.4) 0%, /* 상단 가독성을 위해 어두운 톤 조정 */
+                rgba(10,30,20,0.6) 40%,
                 rgba(10,30,20,0.85) 75%,
                 rgba(10,30,20,1) 100%
             );
@@ -60,7 +60,7 @@
         .hero-content {
             position: relative;
             z-index: 2;
-            padding: 0 28px 56px;
+            padding: 0 28px; /* 하단 편향 패딩 제거 */
             animation: fadeUp 1s ease both;
         }
 
