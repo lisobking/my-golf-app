@@ -36,6 +36,22 @@
           <span class="text-base font-bold text-emerald-300">06:50</span>
         </div>
       </div>
+
+      <!-- 리베라CC 내비 / 지도 바로가기 버튼 3종 -->
+      <div class="mt-5 pt-4 border-t border-emerald-500/20">
+        <div class="text-xs text-emerald-200/90 mb-2 font-medium">리베라CC 길찾기 / 내비게이션</div>
+        <div class="grid grid-cols-3 gap-2">
+          <a href="tmap://search?name=리베라CC" class="py-2 px-2 bg-slate-900/60 hover:bg-slate-900/80 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border border-emerald-400/30 text-white transition active:scale-95">
+            <span class="text-red-400 font-black">T</span> 티맵
+          </a>
+          <a href="https://map.naver.com/v5/search/리베라CC" target="_blank" class="py-2 px-2 bg-slate-900/60 hover:bg-slate-900/80 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border border-emerald-400/30 text-white transition active:scale-95">
+            <span class="text-green-400 font-black">N</span> 네이버
+          </a>
+          <a href="https://map.kakao.com/link/search/리베라CC" target="_blank" class="py-2 px-2 bg-slate-900/60 hover:bg-slate-900/80 rounded-xl text-xs font-semibold flex items-center justify-center gap-1.5 border border-emerald-400/30 text-white transition active:scale-95">
+            <span class="text-yellow-400 font-black">K</span> 카카오
+          </a>
+        </div>
+      </div>
     </div>
 
     <!-- 팀별 출발지 & 타임라인 카드 -->
@@ -61,7 +77,7 @@
       </div>
     </div>
 
-    <!-- 라운드 전 추천 식당 (메뉴 & 가격 포함) -->
+    <!-- 라운드 전 추천 식당 (메뉴, 가격 & 길찾기 버튼) -->
     <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-5 mb-5 shadow-lg backdrop-blur">
       <h2 class="text-sm font-semibold text-emerald-400 flex items-center gap-2 mb-4">
         <i class="fa-solid fa-utensils"></i> 라운드 전 식당 추천 (06:50 집결)
@@ -77,6 +93,8 @@
               <p class="text-xs text-slate-400 mt-0.5">골프장 차량 6분 · 05:00 오픈</p>
             </div>
           </div>
+
+          <!-- 대표 메뉴 & 가격 -->
           <div class="mt-3 pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
             <div class="flex justify-between">
               <span>양평해장국 (양/선지)</span>
@@ -91,6 +109,19 @@
               <span class="font-semibold text-emerald-400">10,000원</span>
             </div>
           </div>
+
+          <!-- 식당 1 경로 버튼 (티맵 / 네이버 / 카카오) -->
+          <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-800/80">
+            <a href="tmap://search?name=양평해장국 동탄중리IC" class="py-1.5 text-center bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium text-slate-200 border border-slate-700">
+              <span class="text-red-400 font-bold">T</span> 티맵
+            </a>
+            <a href="https://map.naver.com/v5/search/양평해장국 동탄중리IC" target="_blank" class="py-1.5 text-center bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium text-slate-200 border border-slate-700">
+              <span class="text-green-400 font-bold">N</span> 네이버
+            </a>
+            <a href="https://map.kakao.com/link/search/양평해장국 동탄중리IC" target="_blank" class="py-1.5 text-center bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium text-slate-200 border border-slate-700">
+              <span class="text-yellow-400 font-bold">K</span> 카카오
+            </a>
+          </div>
         </div>
 
         <!-- 식당 2 -->
@@ -102,6 +133,8 @@
               <p class="text-xs text-slate-400 mt-0.5">골프장 차량 8분 · 05:00 오픈</p>
             </div>
           </div>
+
+          <!-- 대표 메뉴 & 가격 -->
           <div class="mt-3 pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
             <div class="flex justify-between">
               <span>숫총각 버섯 육개장</span>
@@ -115,6 +148,19 @@
               <span>버섯 불고기 뚝배기</span>
               <span class="font-semibold text-teal-400">12,000원</span>
             </div>
+          </div>
+
+          <!-- 식당 2 경로 버튼 (티맵 / 네이버 / 카카오) -->
+          <div class="grid grid-cols-3 gap-2 mt-3 pt-3 border-t border-slate-800/80">
+            <a href="tmap://search?name=별난버섯집 동탄" class="py-1.5 text-center bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium text-slate-200 border border-slate-700">
+              <span class="text-red-400 font-bold">T</span> 티맵
+            </a>
+            <a href="https://map.naver.com/v5/search/별난버섯집 동탄" target="_blank" class="py-1.5 text-center bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium text-slate-200 border border-slate-700">
+              <span class="text-green-400 font-bold">N</span> 네이버
+            </a>
+            <a href="https://map.kakao.com/link/search/별난버섯집 동탄" target="_blank" class="py-1.5 text-center bg-slate-800 hover:bg-slate-700 rounded-lg text-xs font-medium text-slate-200 border border-slate-700">
+              <span class="text-yellow-400 font-bold">K</span> 카카오
+            </a>
           </div>
         </div>
       </div>
