@@ -4,185 +4,167 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>리베라CC 라운딩 초대장</title>
-  <!-- Tailwind CSS & FontAwesome -->
-  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
   <style>
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Segoe UI", Roboto, sans-serif;
-      background-color: #f1f5f9;
-    }
-    .hero-gradient {
-      background: linear-gradient(135deg, #064e3b 0%, #047857 60%, #059669 100%);
-    }
-    .card-shadow {
-      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.03);
-    }
+    body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
   </style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen pb-16">
-
-  <!-- 메인 헤더 / 히어로 섹션 -->
-  <header class="hero-gradient text-white pt-10 pb-12 px-6 rounded-b-3xl card-shadow relative overflow-hidden text-center">
-    <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl">
-      <i class="fas fa-flag"></i>
-    </div>
-    <span class="inline-block px-3 py-1 bg-green-900 bg-opacity-60 text-green-200 text-xs font-semibold tracking-widest uppercase rounded-full mb-2">
-      Golf Rounding Invitation
-    </span>
-    <h1 class="text-3xl font-extrabold tracking-tight">리베라CC</h1>
-    <p class="text-green-100 text-sm mt-1 font-medium">CHERRY HILL 코스 · 예약자: <span class="text-yellow-300 font-bold">효섭</span></p>
-
-    <!-- 티업 시간 하이라이트 박스 -->
-    <div class="mt-6 bg-white bg-opacity-15 backdrop-blur-md rounded-2xl p-4 border border-white border-opacity-20 max-w-sm mx-auto shadow-inner">
-      <div class="text-xs text-green-100 uppercase tracking-wider mb-1">Tee-off Time</div>
-      <div class="text-2xl font-black text-yellow-300 tracking-wide">2026. 10. 04 (일) 08:20</div>
-      <div class="text-xs text-green-50 mt-1 font-light">티업 35분 전(07:45)까지 클럽하우스 도착 요망</div>
-    </div>
-  </header>
-
-  <!-- 메인 콘텐츠 카드 컨테이너 -->
-  <main class="max-w-md mx-auto px-4 -mt-6 space-y-4">
-
-    <!-- 1. 팀별 출발지 & 이동 카드 -->
-    <section class="bg-white rounded-2xl p-5 card-shadow border border-gray-100">
-      <div class="flex items-center space-x-2 mb-3">
-        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm">
-          <i class="fas fa-car-side"></i>
-        </div>
-        <h2 class="text-base font-bold text-gray-900">팀별 출발지 안내</h2>
+<body class="bg-slate-900 text-slate-100 min-h-screen pb-12">
+  <div class="max-w-md mx-auto px-4 pt-6">
+    <!-- Header -->
+    <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-emerald-600 to-teal-800 p-6 shadow-2xl text-center mb-6">
+      <div class="inline-flex items-center gap-2 bg-emerald-950/40 text-emerald-200 text-xs px-3 py-1 rounded-full mb-3 border border-emerald-400/20">
+        <i class="fa-solid fa-flag text-emerald-300"></i> OFFICIAL INVITATION
       </div>
+      <h1 class="text-3xl font-extrabold tracking-tight mb-1">리베라CC</h1>
+      <p class="text-emerald-100/90 text-sm font-medium">CHERRY HILL 코스</p>
+      
+      <div class="mt-6 pt-5 border-t border-emerald-500/30 flex justify-around text-center">
+        <div>
+          <span class="block text-xs text-emerald-200/80">일자</span>
+          <span class="text-base font-bold text-white">10월 4일 (일)</span>
+        </div>
+        <div class="w-px bg-emerald-500/30"></div>
+        <div>
+          <span class="block text-xs text-emerald-200/80">티업 시간</span>
+          <span class="text-base font-bold text-white">08:20</span>
+        </div>
+        <div class="w-px bg-emerald-500/30"></div>
+        <div>
+          <span class="block text-xs text-emerald-200/80">식사 집결</span>
+          <span class="text-base font-bold text-emerald-300">06:50</span>
+        </div>
+      </div>
+    </div>
 
+    <!-- 팀별 출발지 & 타임라인 카드 -->
+    <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-5 mb-5 shadow-lg backdrop-blur">
+      <h2 class="text-sm font-semibold text-emerald-400 flex items-center gap-2 mb-4">
+        <i class="fa-solid fa-car-side"></i> 팀별 출발지 상세 및 이동
+      </h2>
       <div class="space-y-3">
-        <div class="bg-emerald-50 rounded-xl p-3.5 border border-emerald-100 flex justify-between items-center">
+        <div class="bg-slate-700/50 rounded-xl p-3.5 border border-slate-600/40 flex justify-between items-center">
           <div>
-            <span class="text-xs font-bold text-emerald-800 bg-emerald-200 px-2 py-0.5 rounded">팀 1</span>
-            <span class="text-xs text-gray-600 font-medium ml-1">효섭 & 배추</span>
-            <div class="text-xs text-gray-700 font-semibold mt-1">서울 송파구 방이동 166-2</div>
+            <div class="text-xs text-slate-400">팀 1 (효섭 & 배추)</div>
+            <div class="text-sm font-bold text-slate-100 mt-0.5">서울 송파구 방이동 166-2</div>
           </div>
-          <div class="text-right">
-            <span class="text-xs font-black text-emerald-700 bg-white px-2.5 py-1 rounded-lg shadow-sm border border-emerald-200">
-              05:55 출발
-            </span>
-          </div>
+          <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2.5 py-1 rounded-md font-bold">05:40 출발</span>
         </div>
-
-        <div class="bg-blue-50 rounded-xl p-3.5 border border-blue-100 flex justify-between items-center">
+        <div class="bg-slate-700/50 rounded-xl p-3.5 border border-slate-600/40 flex justify-between items-center">
           <div>
-            <span class="text-xs font-bold text-blue-800 bg-blue-200 px-2 py-0.5 rounded">팀 2</span>
-            <span class="text-xs text-gray-600 font-medium ml-1">인석이형</span>
-            <div class="text-xs text-gray-700 font-semibold mt-1">경기도 광명사거리</div>
+            <div class="text-xs text-slate-400">팀 2 (인석이형)</div>
+            <div class="text-sm font-bold text-slate-100 mt-0.5">경기도 광명사거리</div>
           </div>
-          <div class="text-right">
-            <span class="text-xs font-black text-blue-700 bg-white px-2.5 py-1 rounded-lg shadow-sm border border-blue-200">
-              05:50 출발
-            </span>
+          <span class="bg-emerald-500/20 text-emerald-300 text-xs px-2.5 py-1 rounded-md font-bold">05:40 출발</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 라운드 전 추천 식당 (메뉴 & 가격 포함) -->
+    <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-5 mb-5 shadow-lg backdrop-blur">
+      <h2 class="text-sm font-semibold text-emerald-400 flex items-center gap-2 mb-4">
+        <i class="fa-solid fa-utensils"></i> 라운드 전 식당 추천 (06:50 집결)
+      </h2>
+      
+      <div class="space-y-4">
+        <!-- 식당 1 -->
+        <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-4">
+          <div class="flex justify-between items-start mb-2">
+            <div>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300">옵션 1 · 해장국</span>
+              <h3 class="text-base font-bold text-white mt-1">양평해장국 동탄중리IC</h3>
+              <p class="text-xs text-slate-400 mt-0.5">골프장 차량 6분 · 05:00 오픈</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
+            <div class="flex justify-between">
+              <span>양평해장국 (양/선지)</span>
+              <span class="font-semibold text-emerald-400">11,000원</span>
+            </div>
+            <div class="flex justify-between">
+              <span>내장탕</span>
+              <span class="font-semibold text-emerald-400">13,000원</span>
+            </div>
+            <div class="flex justify-between">
+              <span>황태해장국 (맑은 국물)</span>
+              <span class="font-semibold text-emerald-400">10,000원</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 식당 2 -->
+        <div class="bg-slate-900/60 border border-slate-700 rounded-xl p-4">
+          <div class="flex justify-between items-start mb-2">
+            <div>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-teal-500/20 text-teal-300">옵션 2 · 뚝배기/해장</span>
+              <h3 class="text-base font-bold text-white mt-1">별난버섯집</h3>
+              <p class="text-xs text-slate-400 mt-0.5">골프장 차량 8분 · 05:00 오픈</p>
+            </div>
+          </div>
+          <div class="mt-3 pt-3 border-t border-slate-800 space-y-1.5 text-xs text-slate-300">
+            <div class="flex justify-between">
+              <span>숫총각 버섯 육개장</span>
+              <span class="font-semibold text-teal-400">11,000원</span>
+            </div>
+            <div class="flex justify-between">
+              <span>버섯 맑은 해장국</span>
+              <span class="font-semibold text-teal-400">11,000원</span>
+            </div>
+            <div class="flex justify-between">
+              <span>버섯 불고기 뚝배기</span>
+              <span class="font-semibold text-teal-400">12,000원</span>
+            </div>
           </div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- 2. 라운딩 타임라인 -->
-    <section class="bg-white rounded-2xl p-5 card-shadow border border-gray-100">
-      <div class="flex items-center space-x-2 mb-4">
-        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm">
-          <i class="far fa-clock"></i>
-        </div>
-        <h2 class="text-base font-bold text-gray-900">상세 타임라인</h2>
-      </div>
-
-      <div class="relative border-l-2 border-emerald-500 ml-3 space-y-5 pl-5 text-sm">
+    <!-- 타임라인 -->
+    <div class="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-5 mb-6 shadow-lg backdrop-blur">
+      <h2 class="text-sm font-semibold text-emerald-400 flex items-center gap-2 mb-4">
+        <i class="fa-solid fa-clock"></i> 당일 타임라인
+      </h2>
+      <div class="relative pl-6 space-y-4 before:content-[''] before:absolute before:left-2 before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-700">
         <div class="relative">
-          <span class="absolute -left-7 top-1 w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-white"></span>
-          <div class="font-bold text-gray-800">05:50 ~ 05:55 <span class="text-xs font-normal text-emerald-600">출발</span></div>
-          <p class="text-xs text-gray-500 mt-0.5">광명(05:50) / 방이동(05:55) 각각 식당으로 이동</p>
+          <span class="absolute -left-6 top-1.5 w-2.5 h-2.5 rounded-full bg-slate-500 ring-4 ring-slate-800"></span>
+          <div class="text-xs text-slate-400">05:40</div>
+          <div class="text-sm font-medium text-white">각 출발지에서 식당으로 출발</div>
         </div>
-
         <div class="relative">
-          <span class="absolute -left-7 top-1 w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-white"></span>
-          <div class="font-bold text-gray-800">06:50 ~ 07:00 <span class="text-xs font-normal text-emerald-600">식당 집결</span></div>
-          <p class="text-xs text-gray-500 mt-0.5">인근 해장국/버섯집 식사 및 커피 한잔 (약 45분)</p>
+          <span class="absolute -left-6 top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-4 ring-slate-800"></span>
+          <div class="text-xs text-emerald-400 font-semibold">06:50</div>
+          <div class="text-sm font-medium text-white">식당 도착 및 아침 식사</div>
         </div>
-
         <div class="relative">
-          <span class="absolute -left-7 top-1 w-3 h-3 rounded-full bg-emerald-500 ring-4 ring-white"></span>
-          <div class="font-bold text-gray-800">07:45 <span class="text-xs font-normal text-emerald-600">골프장 도착</span></div>
-          <p class="text-xs text-gray-500 mt-0.5">리베라CC 클럽하우스 환복, 락커 배정 및 퍼팅 연습</p>
+          <span class="absolute -left-6 top-1.5 w-2.5 h-2.5 rounded-full bg-emerald-400 ring-4 ring-slate-800"></span>
+          <div class="text-xs text-emerald-400 font-semibold">07:45</div>
+          <div class="text-sm font-medium text-white">리베라CC 클럽하우스 도착 / 체크인</div>
         </div>
-
         <div class="relative">
-          <span class="absolute -left-7 top-1 w-3 h-3 rounded-full bg-yellow-500 ring-4 ring-white"></span>
-          <div class="font-bold text-emerald-800">08:20 <span class="text-xs font-bold text-yellow-600">티오프 (Tee-off)</span></div>
-          <p class="text-xs text-gray-600 font-medium mt-0.5">체리힐 코스 1번홀 라운딩 스타트 ⛳️</p>
+          <span class="absolute -left-6 top-1.5 w-2.5 h-2.5 rounded-full bg-teal-400 ring-4 ring-slate-800"></span>
+          <div class="text-xs text-teal-400 font-bold">08:20</div>
+          <div class="text-sm font-bold text-white">티업 (CHERRY HILL 코스)</div>
         </div>
       </div>
-    </section>
+    </div>
 
-    <!-- 3. 아침 식당 추천 (새벽 오픈) -->
-    <section class="bg-white rounded-2xl p-5 card-shadow border border-gray-100">
-      <div class="flex items-center space-x-2 mb-3">
-        <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center text-sm">
-          <i class="fas fa-utensils"></i>
-        </div>
-        <h2 class="text-base font-bold text-gray-900">새벽 오픈 아침 식당</h2>
-      </div>
+    <!-- 복사 버튼 -->
+    <button onclick="copyInvitation()" class="w-full py-3.5 bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold rounded-xl shadow-lg transition active:scale-[0.98] flex items-center justify-center gap-2">
+      <i class="fa-solid fa-copy"></i> 카카오톡 안내 메시지 복사하기
+    </button>
+    <p id="copy-msg" class="text-center text-xs text-emerald-400 mt-2 opacity-0 transition-opacity">클립보드에 복사되었습니다!</p>
+  </div>
 
-      <!-- 식당 1 -->
-      <div class="p-3.5 bg-gray-50 rounded-xl mb-3 border border-gray-100 hover:border-emerald-200 transition">
-        <div class="flex justify-between items-start">
-          <div>
-            <span class="text-[11px] font-bold px-2 py-0.5 bg-red-100 text-red-700 rounded-md">얼큰·든든</span>
-            <h3 class="font-bold text-sm text-gray-900 mt-1">양평해장국 동탄점</h3>
-          </div>
-          <span class="text-[11px] font-semibold text-gray-500 bg-white px-2 py-0.5 rounded border border-gray-200">24시 영업</span>
-        </div>
-        <p class="text-xs text-gray-500 mt-1">경기 화성시 동탄기흥로 41 (CC까지 차량 6분)</p>
-        <div class="grid grid-cols-2 gap-2 mt-2.5">
-          <a href="https://map.kakao.com/?q=양평해장국 동탄점" target="_blank" class="text-center py-1.5 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-lg text-xs font-bold transition">
-            카카오맵
-          </a>
-          <a href="https://map.naver.com/v5/search/양평해장국 동탄점" target="_blank" class="text-center py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg text-xs font-bold transition">
-            네이버지도
-          </a>
-        </div>
-      </div>
-
-      <!-- 식당 2 -->
-      <div class="p-3.5 bg-gray-50 rounded-xl border border-gray-100 hover:border-emerald-200 transition">
-        <div class="flex justify-between items-start">
-          <div>
-            <span class="text-[11px] font-bold px-2 py-0.5 bg-blue-100 text-blue-700 rounded-md">담백·개운</span>
-            <h3 class="font-bold text-sm text-gray-900 mt-1">별난버섯집</h3>
-          </div>
-          <span class="text-[11px] font-semibold text-gray-500 bg-white px-2 py-0.5 rounded border border-gray-200">05:00 오픈</span>
-        </div>
-        <p class="text-xs text-gray-500 mt-1">경기 화성시 지산2길 16-1 (CC까지 차량 7분)</p>
-        <div class="grid grid-cols-2 gap-2 mt-2.5">
-          <a href="https://map.kakao.com/?q=별난버섯집 동탄" target="_blank" class="text-center py-1.5 bg-yellow-400 hover:bg-yellow-500 text-gray-900 rounded-lg text-xs font-bold transition">
-            카카오맵
-          </a>
-          <a href="https://map.naver.com/v5/search/별난버섯집 화성" target="_blank" class="text-center py-1.5 bg-green-500 hover:bg-green-600 text-white rounded-lg text-xs font-bold transition">
-            네이버지도
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- 4. 골프장 오시는 길 -->
-    <section class="bg-white rounded-2xl p-5 card-shadow border border-gray-100 text-center">
-      <h2 class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-1">Golf Club Location</h2>
-      <div class="text-sm font-bold text-gray-800">리베라 컨트리클럽</div>
-      <p class="text-xs text-gray-500 mt-0.5 mb-3">경기 화성시 동탄기흥로 189</p>
-      <div class="flex space-x-2">
-        <a href="https://map.kakao.com/?q=리베라CC" target="_blank" class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs font-bold transition">
-          <i class="fas fa-map-marker-alt text-yellow-500 mr-1"></i> 카카오내비
-        </a>
-        <a href="https://map.naver.com/v5/search/리베라CC" target="_blank" class="flex-1 py-2 bg-gray-100 hover:bg-gray-200 text-gray-700 rounded-xl text-xs font-bold transition">
-          <i class="fas fa-location-arrow text-green-500 mr-1"></i> 네이버/티맵
-        </a>
-      </div>
-    </section>
-
-  </main>
+  <script>
+    function copyInvitation() {
+      const text = `⛳ [리베라CC] 10/4(일) 08:20 라운딩 안내\n\n■ 일시: 2026.10.04(일) 08:20 (CHERRY HILL)\n■ 장소: 리베라CC (화성시 중리길 183)\n\n■ 타임라인:\n• 05:40 - 각 팀 출발\n  - 팀 1 (효섭&배추): 송파구 방이동 166-2\n  - 팀 2 (인석이형): 광명사거리\n• 06:50 - 아침 식사 집결\n• 07:45 - 골프장 도착\n• 08:20 - 티업\n\n■ 추천 식당:\n1. 양평해장국 동탄중리IC (해장국 1.1만 / 내장탕 1.3만)\n2. 별난버섯집 (버섯육개장 1.1만 / 불고기뚝배기 1.2만)`;
+      navigator.clipboard.writeText(text).then(() => {
+        const msg = document.getElementById('copy-msg');
+        msg.classList.remove('opacity-0');
+        setTimeout(() => msg.classList.add('opacity-0'), 2000);
+      });
+    }
+  </script>
 </body>
 </html>
