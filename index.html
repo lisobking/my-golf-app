@@ -1,606 +1,292 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-    <title>리베라 CC 라운딩 초대장</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;700;900&family=Noto+Sans+KR:wght@300;400;500;700&family=Cormorant+Garamond:ital,wght@0,600;1,400&family=Nanum+Pen+Script&display=swap" rel="stylesheet">
-    <style>
-        :root {
-            --green-deep: #1a3d2f;
-            --green-mid: #2d6a4f;
-            --green-light: #52b788;
-            --gold: #c9993a;
-            --gold-light: #f0c040;
-            --cream: #faf8f3;
-            --text: #2c3e35;
-            --text-muted: #667c74;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>⛳ 가을 라운딩 초대장</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- FontAwesome CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Google Noto Sans KR -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;600;700;800&family=Gaegu:wght@700&display=swap" rel="stylesheet">
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-
-        html { scroll-behavior: smooth; }
-
-        body {
-            background: #0f1f17;
-            font-family: 'Noto Sans KR', sans-serif;
-            color: var(--text);
-            min-height: 100vh;
-        }
-
-        /* ─── HERO ─────────────────────────────── */
-        .hero {
-            position: relative;
-            height: 70svh;
-            min-height: 420px;
-            max-height: 600px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: flex-start;
-            overflow: hidden;
-        }
-
-        .hero-bg {
-            position: absolute; inset: 0;
-            background: url('https://images.unsplash.com/photo-1587174486073-ae5e5cff47bc?auto=format&fit=crop&q=80&w=800') center 40%/cover no-repeat;
-        }
-
-        .hero-bg::after {
-            content: '';
-            position: absolute; inset: 0;
-            background: linear-gradient(
-                160deg,
-                rgba(10,30,20,0.55) 0%,
-                rgba(10,30,20,0.45) 40%,
-                rgba(10,30,20,0.75) 75%,
-                rgba(10,30,20,0.95) 100%
-            );
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            padding: 0 28px;
-            animation: fadeUp 1s ease both;
-        }
-
-        .hero-label {
-            display: inline-block;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 5px;
-            color: var(--gold-light);
-            background: rgba(201,153,58,0.15);
-            border: 1px solid rgba(201,153,58,0.4);
-            padding: 6px 14px;
-            border-radius: 2px;
-            margin-bottom: 20px;
-            text-transform: uppercase;
-        }
-
-        .hero-title {
-            font-family: 'Noto Serif KR', serif;
-            font-size: clamp(34px, 9vw, 52px);
-            font-weight: 900;
-            color: #fff;
-            line-height: 1.15;
-            letter-spacing: -1px;
-            margin-bottom: 16px;
-        }
-
-        .hero-date {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            font-style: italic;
-            color: rgba(255,255,255,0.75);
-            letter-spacing: 1px;
-            margin-bottom: 32px;
-        }
-
-        .hero-scroll {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: rgba(255,255,255,0.5);
-            font-size: 12px;
-            letter-spacing: 3px;
-        }
-
-        .hero-scroll::before {
-            content: '';
-            display: block;
-            width: 32px;
-            height: 1px;
-            background: rgba(255,255,255,0.4);
-        }
-
-        /* ─── SECTION BASE ──────────────────────── */
-        .section {
-            background: var(--cream);
-            padding: 52px 24px 56px;
-            position: relative;
-        }
-
-        .section + .section {
-            border-top: 1px solid rgba(0,0,0,0.07);
-        }
-
-        .section.dark {
-            background: var(--green-deep);
-            color: #fff;
-        }
-
-        .section-eyebrow {
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 5px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 12px;
-        }
-
-        .section.dark .section-eyebrow {
-            color: var(--gold-light);
-        }
-
-        .section-title {
-            font-family: 'Noto Serif KR', serif;
-            font-size: clamp(24px, 6.5vw, 32px);
-            font-weight: 700;
-            color: var(--green-deep);
-            line-height: 1.3;
-            margin-bottom: 36px;
-        }
-
-        .section.dark .section-title {
-            color: #fff;
-        }
-
-        /* ─── TIMELINE ──────────────────────────── */
-        .timeline {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-            position: relative;
-            padding-left: 28px;
-        }
-
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 6px;
-            top: 8px;
-            bottom: 8px;
-            width: 1px;
-            background: linear-gradient(to bottom, var(--green-light), rgba(82,183,136,0.1));
-        }
-
-        .tl-item {
-            display: flex;
-            gap: 20px;
-            padding-bottom: 36px;
-            position: relative;
-            animation: fadeUp 0.6s ease both;
-        }
-
-        .tl-item:last-child { padding-bottom: 0; }
-
-        .tl-dot {
-            position: absolute;
-            left: -28px;
-            top: 4px;
-            width: 13px;
-            height: 13px;
-            border-radius: 50%;
-            background: var(--green-mid);
-            border: 3px solid var(--cream);
-            box-shadow: 0 0 0 1px var(--green-mid);
-            flex-shrink: 0;
-        }
-
-        .tl-time {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 30px;
-            font-weight: 600;
-            color: var(--green-mid);
-            line-height: 1;
-            min-width: 72px;
-        }
-
-        .tl-body {}
-
-        .tl-label {
-            font-weight: 700;
-            font-size: 17px;
-            color: var(--green-deep);
-            margin-bottom: 3px;
-        }
-
-        .tl-sub {
-            font-size: 14px;
-            color: var(--text-muted);
-        }
-
-        /* ─── RESTAURANT ────────────────────────── */
-        .restaurant-img {
-            width: 100%;
-            height: 240px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 28px;
-            display: block;
-        }
-
-        .info-row {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            margin-bottom: 12px;
-        }
-
-        .info-icon {
-            width: 34px;
-            height: 34px;
-            border-radius: 50%;
-            background: rgba(45,106,79,0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            font-size: 15px;
-        }
-
-        .info-text {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.5;
-            padding-top: 6px;
-        }
-
-        .info-text strong {
-            color: var(--green-deep);
-        }
-
-        .map-btn-wrap {
-            display: flex;
-            gap: 12px;
-            margin-top: 24px;
-        }
-
-        .map-btn {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 15px 10px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 15px;
-            transition: transform 0.15s ease, box-shadow 0.15s ease;
-        }
-
-        .map-btn:active {
-            transform: scale(0.97);
-        }
-
-        .map-btn.naver {
-            background: #03C75A;
-            color: #fff;
-            box-shadow: 0 4px 16px rgba(3,199,90,0.35);
-        }
-
-        .map-btn.naver:active {
-            box-shadow: 0 2px 8px rgba(3,199,90,0.2);
-        }
-
-        .map-btn.kakao {
-            background: #fae100;
-            color: #3c1e1e;
-            box-shadow: 0 4px 16px rgba(250,225,0,0.35);
-        }
-
-        .map-btn.kakao:active {
-            box-shadow: 0 2px 8px rgba(250,225,0,0.2);
-        }
-
-        .map-btn-icon {
-            width: 22px;
-            height: 22px;
-            flex-shrink: 0;
-        }
-
-        /* ─── MENU ──────────────────────────────── */
-        .menu-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .menu-card {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            background: #fff;
-            border-radius: 18px;
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.07);
-        }
-
-        .menu-img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            flex-shrink: 0;
-        }
-
-        .menu-info {
-            flex: 1;
-            padding: 4px 0;
-        }
-
-        .menu-name {
-            font-weight: 700;
-            font-size: 17px;
-            color: var(--green-deep);
-            margin-bottom: 4px;
-        }
-
-        .menu-desc {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 8px;
-        }
-
-        .menu-price {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 20px;
-            font-weight: 600;
-            color: var(--gold);
-        }
-
-        /* ─── MASCOT ────────────────────────────── */
-        .mascot-section {
-            background: linear-gradient(135deg, #1a3d2f 0%, #0f2419 100%);
-            padding: 52px 24px 64px;
-        }
-
-        .mascot-card {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 28px;
-            padding: 36px 28px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 28px;
-            text-align: center;
-        }
-
-        .mascot-img {
-            width: 140px;
-            height: 140px;
-            border-radius: 50%;
-            object-fit: contain;
-            background: #fff;
-            border: 5px solid rgba(255,255,255,0.2);
-            box-shadow: 0 0 0 2px rgba(201,153,58,0.5);
-        }
-
-        .speech {
-            font-family: 'Nanum Pen Script', cursive;
-            font-size: 32px;
-            color: #fff;
-            line-height: 1.5;
-        }
-
-        .speech strong {
-            color: var(--gold-light);
-        }
-
-        /* ─── FOOTER ────────────────────────────── */
-        .footer {
-            background: #0a1710;
-            padding: 36px 24px;
-            text-align: center;
-        }
-
-        .footer-logo {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 22px;
-            color: rgba(255,255,255,0.4);
-            letter-spacing: 3px;
-            margin-bottom: 10px;
-        }
-
-        .footer-sub {
-            font-size: 12px;
-            color: rgba(255,255,255,0.25);
-            letter-spacing: 2px;
-        }
-
-        /* ─── ANIMATIONS ────────────────────────── */
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
-
-        .section {
-            animation: fadeUp 0.7s ease both;
-        }
-
-        /* ─── DIVIDER ───────────────────────────── */
-        .divider {
-            width: 40px;
-            height: 2px;
-            background: linear-gradient(to right, var(--gold), transparent);
-            margin-bottom: 32px;
-        }
-
-        /* ─── HIGHLIGHT BOX ─────────────────────── */
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(45,106,79,0.08), rgba(82,183,136,0.05));
-            border-left: 3px solid var(--green-light);
-            border-radius: 0 12px 12px 0;
-            padding: 16px 20px;
-            margin-bottom: 28px;
-        }
-
-        .highlight-box p {
-            font-size: 15px;
-            color: var(--text-muted);
-            line-height: 1.7;
-        }
-
-        .highlight-box strong {
-            color: var(--green-deep);
-        }
-    </style>
+  <style>
+    body {
+      font-family: 'Noto Sans KR', sans-serif;
+      background-color: #F3F4F6;
+    }
+    .badge-font {
+      font-family: 'Gaegu', cursive;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+    }
+  </style>
 </head>
-<body>
+<body class="flex justify-center min-h-screen text-slate-800 antialiased p-0 sm:p-4">
 
-    <!-- ① HERO -->
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="hero-content">
-            <div class="hero-label">Golf Invitation</div>
-            <h1 class="hero-title">리베라 CC<br>라운딩 안내</h1>
-            <p class="hero-date">2026. 05. 02 (토) &nbsp;·&nbsp; 11:22 AM Tee-Off</p>
-            <p class="hero-scroll">SCROLL</p>
+  <!-- Mobile Wrapper -->
+  <div class="w-full max-w-md bg-white shadow-2xl overflow-hidden sm:rounded-3xl flex flex-col min-h-screen relative">
+    
+    <!-- Hero / Header Section -->
+    <div class="relative bg-gradient-to-b from-emerald-600 via-emerald-500 to-green-600 text-white pt-10 pb-16 px-6 text-center rounded-b-[2.5rem] shadow-lg">
+      <div class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-semibold tracking-wider text-emerald-50 mb-3 uppercase">
+        <i class="fa-solid fa-flag text-amber-300"></i> Autumn Field Invitation
+      </div>
+      
+      <h1 class="text-2xl font-black tracking-tight leading-snug">
+        즐거운 가을 라운딩에<br/>여러분을 초대합니다! ⛳
+      </h1>
+      
+      <!-- Character Mascot Banner -->
+      <div class="mt-6 flex justify-center items-center">
+        <div class="relative w-44 h-44 bg-white/10 rounded-full flex items-center justify-center p-3 border-2 border-white/20 shadow-inner">
+          <svg viewBox="0 0 200 200" class="w-full h-full drop-shadow-md">
+            <!-- Lion Character (Ryan Style) with Golf Cap -->
+            <circle cx="100" cy="115" r="60" fill="#E59A35" />
+            <!-- Ears -->
+            <circle cx="50" cy="68" r="18" fill="#E59A35" />
+            <circle cx="150" cy="68" r="18" fill="#E59A35" />
+            <circle cx="50" cy="68" r="10" fill="#C57E22" />
+            <circle cx="150" cy="68" r="10" fill="#C57E22" />
+            <!-- White Snout -->
+            <ellipse cx="90" cy="122" rx="14" ry="12" fill="#FFFFFF" />
+            <ellipse cx="110" cy="122" rx="14" ry="12" fill="#FFFFFF" />
+            <!-- Nose & Mouth -->
+            <ellipse cx="100" cy="115" rx="6" ry="5" fill="#222" />
+            <!-- Straight Eyebrows -->
+            <line x1="68" y1="92" x2="88" y2="92" stroke="#222" stroke-width="4.5" stroke-linecap="round" />
+            <line x1="112" y1="92" x2="132" y2="92" stroke="#222" stroke-width="4.5" stroke-linecap="round" />
+            <!-- Eyes -->
+            <circle cx="78" cy="103" r="4.5" fill="#222" />
+            <circle cx="122" cy="103" r="4.5" fill="#222" />
+            <!-- Golf Sun Visor / Cap -->
+            <path d="M42,90 Q100,50 158,90 Q100,75 42,90 Z" fill="#2563EB" />
+            <path d="M52,80 Q100,45 148,80" fill="none" stroke="#FBBF24" stroke-width="4" />
+            <ellipse cx="100" cy="65" rx="10" ry="10" fill="#FFFFFF" />
+            <text x="96" y="69" font-size="11" font-weight="bold" fill="#2563EB">⛳</text>
+            <!-- Golf Ball & Tee -->
+            <circle cx="155" cy="155" r="9" fill="#FFFFFF" stroke="#D1D5DB" stroke-width="1.5" />
+            <polygon points="152,165 158,165 155,178" fill="#F87171" />
+          </svg>
+          <div class="absolute -bottom-2 bg-amber-400 text-slate-900 font-extrabold text-xs px-3 py-1 rounded-full shadow-md badge-font text-base tracking-wide">
+            굿샷 & 나이스온! 🏌️‍♂️
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- ② TIMELINE -->
-    <section class="section">
-        <p class="section-eyebrow">Schedule</p>
-        <h2 class="section-title">당일 타임라인</h2>
-        <div class="divider"></div>
-        <div class="timeline">
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-time">08:30</div>
-                <div class="tl-body">
-                    <p class="tl-label">방이동 출발</p>
-                    <p class="tl-sub">집결 후 카풀 이동</p>
-                </div>
-            </div>
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-time">09:40</div>
-                <div class="tl-body">
-                    <p class="tl-label">금성식당 식사</p>
-                    <p class="tl-sub">경기 용인시 양지면</p>
-                </div>
-            </div>
-            <div class="tl-item">
-                <div class="tl-dot"></div>
-                <div class="tl-time">10:40</div>
-                <div class="tl-body">
-                    <p class="tl-label">리베라 CC 도착</p>
-                    <p class="tl-sub">라커룸 이용 및 워밍업</p>
-                </div>
-            </div>
-            <div class="tl-item">
-                <div class="tl-dot" style="background: var(--gold); box-shadow: 0 0 0 1px var(--gold);"></div>
-                <div class="tl-time" style="color: var(--gold);">11:22</div>
-                <div class="tl-body">
-                    <p class="tl-label">⛳ 라운딩 시작</p>
-                    <p class="tl-sub">굿샷! 즐거운 라운드 되세요</p>
-                </div>
-            </div>
+      <p class="mt-4 text-emerald-100 text-sm font-medium">
+        아침 든든히 먹고 기분 좋게 굿샷 날려보아요!
+      </p>
+    </div>
+
+    <!-- Main Content Body -->
+    <div class="px-5 -mt-8 space-y-5 pb-10 z-10">
+      
+      <!-- Key Info Card -->
+      <div class="glass-card rounded-2xl p-5 shadow-lg border border-emerald-100">
+        <div class="flex items-center gap-2 mb-3 text-emerald-800 font-bold text-base">
+          <i class="fa-regular fa-calendar-check text-emerald-600 text-lg"></i>
+          라운딩 예약 정보
         </div>
-    </section>
-
-    <!-- ③ RESTAURANT -->
-    <section class="section">
-        <p class="section-eyebrow">Pre-Round Dining</p>
-        <h2 class="section-title">식전 모임<br>금성식당</h2>
-        <div class="divider"></div>
-        <img class="restaurant-img" src="https://images.unsplash.com/photo-1498654896293-37aacf113fd9?auto=format&fit=crop&q=80&w=800" alt="식당 이미지">
-
-        <div class="highlight-box">
-            <p><strong>"재래식 손두부와 청국장"</strong><br>라운딩 전 속이 가장 편안한 메뉴입니다.</p>
+        
+        <div class="bg-emerald-50/60 rounded-xl p-3.5 space-y-2.5 text-sm">
+          <div class="flex justify-between items-center border-b border-emerald-100/80 pb-2">
+            <span class="text-slate-500 font-medium">예약 일시</span>
+            <span class="font-bold text-slate-900">2026. 10. 04 (일) 08:20</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-emerald-100/80 pb-2">
+            <span class="text-slate-500 font-medium">골프장</span>
+            <span class="font-bold text-emerald-700">리베라CC (CHERRY HILL)</span>
+          </div>
+          <div class="flex justify-between items-center border-b border-emerald-100/80 pb-2">
+            <span class="text-slate-500 font-medium">도착 목표</span>
+            <span class="font-bold text-rose-600">07:50 (티업 30분 전)</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span class="text-slate-500 font-medium">예약자명</span>
+            <span class="font-bold text-slate-800">효섭 님 (외 3명)</span>
+          </div>
         </div>
+      </div>
 
-        <div class="info-row">
-            <div class="info-icon">📍</div>
-            <p class="info-text">경기 용인시 처인구 양지면<br>남평로 16</p>
+      <!-- Departure & Carpool Info -->
+      <div class="bg-white rounded-2xl p-5 shadow-md border border-slate-100">
+        <div class="flex items-center gap-2 mb-3 text-slate-900 font-bold text-base">
+          <i class="fa-solid fa-car-side text-blue-500 text-lg"></i>
+          출발지별 권장 시간
         </div>
-        <div class="info-row">
-            <div class="info-icon">🕘</div>
-            <p class="info-text"><strong>도착 시간</strong> 09:40 AM</p>
-        </div>
+        <p class="text-xs text-slate-500 mb-3">주말 아침 해장국 식당 도착(07:00) 기준 권장 시간입니다.</p>
 
-        <div class="map-btn-wrap">
-            <a href="https://map.naver.com/p/search/경기%20용인시%20처인구%20양지면%20남평로%2016%20금성식당" class="map-btn naver" target="_blank">
-                <svg class="map-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="5" fill="white" fill-opacity="0.25"/>
-                    <path d="M6 18V6h3.4l4.8 7.5V6H17v12h-3.4L8.8 10.5V18H6z" fill="white"/>
-                </svg>
-                네이버 지도
-            </a>
-            <a href="https://map.kakao.com/link/search/용인%20금성식당" class="map-btn kakao" target="_blank">
-                <svg class="map-btn-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="24" height="24" rx="5" fill="#3c1e1e" fill-opacity="0.15"/>
-                    <path d="M12 4C7.58 4 4 6.91 4 10.5c0 2.27 1.42 4.27 3.57 5.44l-.9 3.26 3.6-2.27c.54.08 1.1.12 1.73.12 4.42 0 8-2.91 8-6.5S16.42 4 12 4z" fill="#3c1e1e"/>
-                </svg>
-                카카오맵
-            </a>
-        </div>
-    </section>
-
-    <!-- ④ MENU -->
-    <section class="section">
-        <p class="section-eyebrow">Menu</p>
-        <h2 class="section-title">금성식당 주요 메뉴</h2>
-        <div class="divider"></div>
-        <div class="menu-list">
-            <div class="menu-card">
-                <img class="menu-img" src="https://images.unsplash.com/photo-1743419612786-19d116bb8c40?auto=format&fit=crop&q=80&w=200" alt="청국장 찌개">
-                <div class="menu-info">
-                    <p class="menu-name">청국장 찌개</p>
-                    <p class="menu-desc">구수하고 든든한 전통 한식</p>
-                    <p class="menu-price">12,000원</p>
-                </div>
+        <div class="space-y-3">
+          <!-- Team Songpa -->
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center text-xs font-bold text-blue-700 bg-blue-100 px-2 py-0.5 rounded">
+                송파 방이동 팀
+              </span>
+              <span class="text-xs text-slate-500 font-semibold">소요시간 약 45~50분</span>
             </div>
-            <div class="menu-card">
-                <img class="menu-img" src="https://images.unsplash.com/photo-1744612190414-f8844313befb?auto=format&fit=crop&q=80&w=200" alt="재래식 손두부">
-                <div class="menu-info">
-                    <p class="menu-name">재래식 손두부</p>
-                    <p class="menu-desc">속이 편안한 담백한 두부</p>
-                    <p class="menu-price">7,000원</p>
-                </div>
+            <div class="mt-2 text-sm font-semibold text-slate-800">
+              효섭 & 배추 (방이동 166-2)
             </div>
-            <div class="menu-card">
-                <img class="menu-img" src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&q=80&w=200" alt="황태구이">
-                <div class="menu-info">
-                    <p class="menu-name">황태구이</p>
-                    <p class="menu-desc">바삭하고 고소한 황태 요리</p>
-                    <p class="menu-price">15,000원</p>
-                </div>
+            <div class="mt-1 text-xs text-rose-600 font-bold flex items-center gap-1">
+              <i class="fa-solid fa-clock"></i> 06:10 ~ 06:15 출발 권장
             </div>
-        </div>
-    </section>
+          </div>
 
-    <!-- ⑤ MASCOT -->
-    <section class="mascot-section">
-        <div class="mascot-card">
-            <img class="mascot-img" src="https://t1.daumcdn.net/friends/prod/category/ryan_round.png" alt="라이언 캐릭터">
-            <div class="speech">
-                "5월 2일 필드에서 뵙겠습니다!<br>오늘 모두 <strong>굿샷</strong> 하세요! ⛳️"
+          <!-- Team Gwangmyeong -->
+          <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200/80">
+            <div class="flex items-center justify-between">
+              <span class="inline-flex items-center text-xs font-bold text-purple-700 bg-purple-100 px-2 py-0.5 rounded">
+                광명 팀
+              </span>
+              <span class="text-xs text-slate-500 font-semibold">소요시간 약 45~50분</span>
             </div>
+            <div class="mt-2 text-sm font-semibold text-slate-800">
+              인석이형 (광명사거리)
+            </div>
+            <div class="mt-1 text-xs text-rose-600 font-bold flex items-center gap-1">
+              <i class="fa-solid fa-clock"></i> 06:10 ~ 06:15 출발 권장
+            </div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- ⑥ FOOTER -->
-    <footer class="footer">
-        <p class="footer-logo">RIVERA C.C.</p>
-        <p class="footer-sub">2026 · 05 · 02 &nbsp;|&nbsp; 11:22 AM TEE-OFF</p>
-    </footer>
+      <!-- Breakfast & Menu Section -->
+      <div class="bg-white rounded-2xl p-5 shadow-md border border-slate-100">
+        <div class="flex items-center justify-between mb-3">
+          <div class="flex items-center gap-2 text-slate-900 font-bold text-base">
+            <i class="fa-solid fa-bowl-food text-amber-500 text-lg"></i>
+            아침 식사 장소 & 메뉴
+          </div>
+          <span class="text-[11px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full">07:05 집결</span>
+        </div>
+        
+        <div class="text-sm font-bold text-slate-800">일품양평해장국 리베라cc점</div>
+        <p class="text-xs text-slate-500 mt-0.5">화성시 동탄신리천로 268 (골프장까지 차로 5~8분)</p>
+
+        <!-- Menu Cards -->
+        <div class="mt-4 grid grid-cols-2 gap-2 text-xs">
+          <div class="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60">
+            <div class="font-bold text-slate-800 flex items-center gap-1">
+              <span>🍲</span> 양평해장국
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">벌집양 + 선지 + 콩나물 시원한 맛</p>
+            <div class="text-amber-800 font-bold mt-1">11,000원~</div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60">
+            <div class="font-bold text-slate-800 flex items-center gap-1">
+              <span>🌶️</span> 얼큰순대국
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">칼칼하고 든든한 국물</p>
+            <div class="text-amber-800 font-bold mt-1">11,000원</div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60">
+            <div class="font-bold text-slate-800 flex items-center gap-1">
+              <span>🥩</span> 뼈다귀해장국
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">살코기 듬뿍 우거지 뚝배기</p>
+            <div class="text-amber-800 font-bold mt-1">11,000원</div>
+          </div>
+
+          <div class="p-2.5 rounded-xl bg-amber-50/70 border border-amber-200/60">
+            <div class="font-bold text-slate-800 flex items-center gap-1">
+              <span>🥣</span> 황태해장국/순두부
+            </div>
+            <p class="text-[11px] text-slate-500 mt-1">깔끔하고 담백한 속풀이</p>
+            <div class="text-amber-800 font-bold mt-1">11,000원</div>
+          </div>
+        </div>
+
+        <!-- Navigation Buttons for Restaurant -->
+        <div class="mt-4 pt-3 border-t border-slate-100 flex gap-2">
+          <a href="https://map.kakao.com/link/search/일품양평해장국 리베라cc점" target="_blank"
+             class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 bg-yellow-400 hover:bg-yellow-500 text-slate-900 rounded-xl font-bold text-xs shadow-sm transition">
+            <i class="fa-solid fa-location-arrow"></i> 카카오맵 길찾기
+          </a>
+          <a href="https://map.naver.com/v5/search/일품양평해장국 리베라cc점" target="_blank"
+             class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#03C75A] hover:bg-[#02b351] text-white rounded-xl font-bold text-xs shadow-sm transition">
+            <i class="fa-solid fa-n"></i> 네이버지도 길찾기
+          </a>
+        </div>
+      </div>
+
+      <!-- Golf Course Info & Map Link -->
+      <div class="bg-white rounded-2xl p-5 shadow-md border border-slate-100">
+        <div class="flex items-center gap-2 mb-2 text-slate-900 font-bold text-base">
+          <i class="fa-solid fa-golf-ball-tee text-emerald-600 text-lg"></i>
+          골프장 위치 & 경로
+        </div>
+        <div class="text-sm font-bold text-slate-800">리베라 컨트리클럽 (리베라CC)</div>
+        <p class="text-xs text-slate-500 mt-0.5">경기 화성시 동탄면 중리길 183</p>
+
+        <div class="mt-3 flex gap-2">
+          <a href="https://map.kakao.com/link/search/리베라CC" target="_blank"
+             class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 bg-yellow-400 hover:bg-yellow-500 text-slate-900 rounded-xl font-bold text-xs shadow-sm transition">
+            <i class="fa-solid fa-location-arrow"></i> 카카오맵 바로가기
+          </a>
+          <a href="https://map.naver.com/v5/search/리베라CC" target="_blank"
+             class="flex-1 flex items-center justify-center gap-1.5 py-2.5 px-3 bg-[#03C75A] hover:bg-[#02b351] text-white rounded-xl font-bold text-xs shadow-sm transition">
+            <i class="fa-solid fa-n"></i> 네이버지도 바로가기
+          </a>
+        </div>
+      </div>
+
+      <!-- Schedule Timeline -->
+      <div class="bg-white rounded-2xl p-5 shadow-md border border-slate-100">
+        <div class="flex items-center gap-2 mb-4 text-slate-900 font-bold text-base">
+          <i class="fa-solid fa-list-check text-indigo-500 text-lg"></i>
+          당일 진행 타임라인
+        </div>
+
+        <ol class="relative border-l-2 border-emerald-200 ml-2 space-y-4 text-xs">
+          <li class="ml-4">
+            <div class="absolute -left-1.5 mt-1 w-3 h-3 rounded-full bg-emerald-500 border-2 border-white"></div>
+            <div class="font-bold text-slate-900 text-sm">06:10 ~ 06:15</div>
+            <p class="text-slate-500">방이동 & 광명사거리 각각 출발</p>
+          </li>
+          <li class="ml-4">
+            <div class="absolute -left-1.5 mt-1 w-3 h-3 rounded-full bg-amber-500 border-2 border-white"></div>
+            <div class="font-bold text-slate-900 text-sm">07:05</div>
+            <p class="text-slate-500">일품양평해장국 집결 및 아침 식사</p>
+          </li>
+          <li class="ml-4">
+            <div class="absolute -left-1.5 mt-1 w-3 h-3 rounded-full bg-blue-500 border-2 border-white"></div>
+            <div class="font-bold text-slate-900 text-sm">07:45 ~ 07:50</div>
+            <p class="text-slate-500">리베라CC 클럽하우스 도착, 체크인 및 환복</p>
+          </li>
+          <li class="ml-4">
+            <div class="absolute -left-1.5 mt-1 w-3 h-3 rounded-full bg-rose-500 border-2 border-white ring-4 ring-rose-100"></div>
+            <div class="font-bold text-rose-600 text-sm">08:20 🏌️‍♂️</div>
+            <p class="text-slate-700 font-semibold">CHERRY HILL 코스 티오프!</p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Quick Share Button -->
+      <div class="pt-2">
+        <button onclick="navigator.clipboard ? navigator.clipboard.writeText(window.location.href).then(() => alert('초대장 링크가 복사되었습니다! 카톡에 공유해보세요.')) : alert('브라우저 주소창 링크를 복사해주세요!');" 
+                class="w-full py-3.5 bg-slate-900 hover:bg-slate-800 text-white rounded-2xl font-bold text-sm shadow-lg flex items-center justify-center gap-2 transition active:scale-[0.98]">
+          <i class="fa-solid fa-share-nodes"></i> 초대장 링크 복사하기
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="mt-auto py-5 bg-slate-100 text-center text-xs text-slate-400 border-t border-slate-200">
+      즐거운 라운딩 되세요! 🏌️‍♂️⛳<br/>
+      안전운전은 필수입니다.
+    </div>
+
+  </div>
 
 </body>
 </html>
